@@ -1,15 +1,106 @@
+/******************
+  REGOLE GENERALI
+*******************/
+
+/* Reset pagina */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Stili di base */
 :root {
-  font-size: 12px;  
+  font-size: 15px;  
 }
 
 body {
-    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 1.1rem;
+    background-color: rgb(152, 180, 118);
+}
+
+main {
+  font-family: "Sour Gummy", sans-serif;
 }
 
 h1 {
   font-size: 3.2em;
+  text-align: center;
 }
 
 ul {
   list-style-type: none;
+  margin: 20px 0;
+}
+
+li {
+  padding: 10px;
+  border: 1px solid black;
+  font-size: 1.3rem;
+}
+
+li:hover {
+  background-color: rgb(96, 156, 122);
+}
+
+/***************************
+    CLASSI RIUTILIZZABILI 
+****************************/
+.container {
+  max-width: 80%;
+  padding: 50px;
+  margin: 50px ;
+}
+
+/************
+    MAIN 
+*************/
+h1 {
+  margin-bottom: 5px;
+}
+
+.input-titolo {
+  font-size: 1.2rem;
+  margin: 30px 0 10px;
+  padding: 5px;
+  background-color: rgb(253, 253, 253);
+}
+
+.icona-cestino {
+  padding-right: 20px;
+  color: rgb(0, 0, 0);
+  transition: font-size 0.2s;
+}
+
+.icona-cestino:hover {
+  cursor: pointer;
+  color: hsl(0, 0%, 70%);
+}
+
+.btn {
+  font-size: 1.2rem;
+  padding: 5px 10px;
+  margin-left: 5px;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: rgb(63, 77, 57);
+}
+
+/************************************** VERSIONE TABLET **************************************/
+
+@media screen and (max-width: 800px) {
+
+  .container {
+    width: 80%;
+  }
+}
+
+/************************************** VERSIONE SMARTPHONE **************************************/
+@media screen and (max-width: 500px) {
+
+  .container {
+    width: 50%;
+  }
 }

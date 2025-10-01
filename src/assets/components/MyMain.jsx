@@ -8,36 +8,43 @@ function MyMain() {
 
     return (
 
-        <>
-            <h1>Lista Articoli:</h1>
+        <main>
 
-            <form onSubmit = {aggiungiArticolo} >
-                <input 
-                    type="text" 
-                    value={contentInput}
-                    placeholder="Inserisci un titolo..."
-                    onChange={(event) => setContentInput(event.target.value)} /* All'input aggiorna lo stato */
-                />
-                <button type="submit"> + </button>
-            </form>
+            <div className="container"> 
+                <h1>
+                    Lista Articoli
+                </h1>
 
-            {/* Creo Lista Articoli */}
-            <ul>
-                {articoli.map((articolo, i) => (
-                    <li key={i}>
-                        {articolo}
+                <form onSubmit = {aggiungiArticolo} >
+                    <input
+                        className="input-titolo"
+                        type="text" 
+                        value={contentInput}
+                        placeholder="Inserisci un titolo..."
+                        onChange={(event) => setContentInput(event.target.value)} /* All'input aggiorna lo stato */
+                    />
+                    <button type="submit" className="btn"> + </button>
+                </form>
 
-                        {/* Icona cestino */}
-                        <i 
-                            className="fa-solid fa-trash"
-                            onClick={ function()
-                                        {eliminaArticolo(i)
-                                    }}>                        
-                        </i>
-                    </li>
-                ))}
-            </ul>
-        </>
+                {/* Creo Lista Articoli */}
+                <ul>
+                    {articoli.map((articolo, i) => (
+                        <li key={i}>
+                            {/* Icona cestino */}
+                            <i
+                                className="fa-solid fa-trash icona-cestino"
+                                onClick={function () {
+                                    eliminaArticolo(i)
+                                }}>
+                            </i>
+
+                            {/* Articolo Lista */}
+                            {articolo}
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </main>
     )
 
     /***************
