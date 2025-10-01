@@ -26,6 +26,14 @@ function MyMain() {
                 {articoli.map((articolo, i) => (
                     <li key={i}>
                         {articolo}
+
+                        {/* Icona cestino */}
+                        <i 
+                            className="fa-solid fa-trash"
+                            onClick={ function()
+                                        {eliminaArticolo(i)
+                                    }}>                        
+                        </i>
                     </li>
                 ))}
             </ul>
@@ -37,18 +45,30 @@ function MyMain() {
     ****************/
     /* Funzione che aggiunge un nuovo articolo all'elenco  */
     function aggiungiArticolo() {
-        blockDefaultForm();
+        blockDefaultForm();                         // Chiamata funzione per bloccare il refresh della pagina
 
-        const nuovoArray = [...articoli]        // Copia array 
-        nuovoArray.push(contentInput.trim());   // Aggiungo articolo all'array eliminando gli spazi vuoti ai lati
-        setArticoli(nuovoArray);                // Aggiorno ls variabile di stato stato con la nuova lista
-        setContentInput("");                    // Svuoto l'input
+        if(contentInput !== "") {
+            const bufferAggiungi = [...articoli]        // Copia array 
+            bufferAggiungi.push(contentInput.trim());   // Aggiungo articolo all'array eliminando gli spazi vuoti ai lati
+            setArticoli(bufferAggiungi);                // Aggiorno ls variabile di stato stato con la nuova lista
+            setContentInput("");                        // Svuoto l'input
+        }
     }
 
     /* Funzione che blocca il refresh della pagina */
     function blockDefaultForm() {
         event.preventDefault();
     }
+
+    /* Funzione che elimina un articolo dall'elenco  */
+    function eliminaArticolo(indexEliminato) {
+
+        const bufferElimina = articoli.filter((articolo, indexCorrente) => {
+            return indexCorrente !== indexEliminato;    // Crea nuovo array escludendo l'articolo il cui indice corrisponde a quello eliminato
+        });
+        setArticoli(bufferElimina);                     // Aggiorna la lista degli articoli
+    }
+
 }
 
 export default MyMain
